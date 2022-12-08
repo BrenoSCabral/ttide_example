@@ -85,3 +85,41 @@ def trata_ttide(df):
   del info_har_dados_df['Componente de Mare']
 
   return info_har_dados_df.sort_values(by=['Amplitude (m)'], ascending=False)
+
+def numero_forma(df):
+  nf = 0
+  k1=0
+  o1=0
+  s2=0
+  m2=0
+  for i in range(len(df)):
+      #print(df.index[i])
+      if df.index[i] == b'K1  ':
+          k1= df['Amplitude (m)'][i]
+          
+      if df.index[i] == b'O1  ':
+          o1= df['Amplitude (m)'][i]
+          
+      if df.index[i] == b'S2  ':
+          s2= df['Amplitude (m)'][i]
+          
+      if df.index[i] == b'M2  ':
+          m2= df['Amplitude (m)'][i]
+
+          
+  nf = (k1+o1)/(s2+m2)
+  print(nf)
+
+  if nf <= 0.25:
+      print('Maré semi-diurna')
+      
+  elif nf > 0.25 and nf <= 1.5:
+      print('Maré mista com predominância semi-diurna')
+      
+  elif nf > 1.5 and nf <= 3.0:
+      print('Maré mista com predominância diurna')
+      
+  elif nf > 3.0:
+      print('Maré diurna')
+      
+  return nf

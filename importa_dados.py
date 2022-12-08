@@ -90,6 +90,7 @@ def importa_tudo():
 
   return(
     analisa_serie(importa_louisiana()), 
-    analisa_serie(importa_amapa()), 
+    # analisa_serie(importa_amapa()), 
+    importa_amapa(),
     analisa_serie(importa_ilha_fiscal())
     )
